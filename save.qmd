@@ -1,0 +1,71 @@
+---
+title: "The title"
+subtitle: "Beschreibung"
+author: "Daniel Wollschläger"
+date: today
+execute:
+    tidy: false
+    message: false
+    warning: false
+    error: true
+format:
+    docx:
+        toc: true
+crossref:
+    fig-title: "Abbildung"
+    tbl-title: "Tababelle"
+    fig-prefix: "Abb."
+    tbl-prefix: "Tab."
+bibliography: quarto_literatur.bib
+csl: european-journal-of-epidemiology.csl
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+# A header
+
+Regular text
+
+```{r}
+dat <- read.table("dat_sossap.csv",
+                  sep=";",
+                  header=TRUE)
+```
+
+Number of rows: `r nrow(dat)`
+Number of columns: `r ncol(dat)`
+
+```{r}
+#| label: fig-ggplot
+dat_sub <- dat %>%
+    filter(metric =="DMEAN",
+           structure == "1_HEART")
+
+ggplot(dat_sub, aes(x=Groesse, y=Gewicht)) +
+    geom_point()
+```
+
+Verweis auf @fig-ggplot.
+
+# Regression
+
+Fit regression:
+
+```{r echo=FALSE}
+fit <- lm(observed ~ GD1 + Seite + haveLAG, data=dat_sub)
+```
+
+Coefficient + model tests
+
+```{r}
+summary(fit)
+```
+
+# Literaturverweise
+
+Dazu gibt es Evidenz [@Murdoch2024], ebenfalls bei @Brink2010.
+
+# References
