@@ -16,8 +16,8 @@ crossref:
     tbl-title: "Tababelle"
     fig-prefix: "Abb."
     tbl-prefix: "Tab."
-bibliography: quarto_literatur.bib
-csl: european-journal-of-epidemiology.csl
+bibliography: data/quarto_literatur.bib
+csl: data/european-journal-of-epidemiology.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -30,8 +30,8 @@ library(dplyr)
 Regular text
 
 ```{r}
-dat <- read.table("dat_sossap.csv",
-                  sep=";",
+dat <- read.table("data/dat_sossap.csv",
+                  sep="\t",
                   header=TRUE)
 ```
 
@@ -40,7 +40,7 @@ Number of columns: `r ncol(dat)`
 
 ```{r}
 #| label: fig-ggplot
-dat_sub <- dat %>%
+dat_sub <- dat |>
     filter(metric =="DMEAN",
            structure == "1_HEART")
 

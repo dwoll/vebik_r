@@ -3,6 +3,8 @@
 # glm()
 # t.test(), alternative=, wilcox.test(), anova(), aov()
 # chisq.test(), fisher.test(), binom.test()
+# Package survival
+# - survfit(), survdiff(), coxph()
 
 ## PASSOS data set
 ## Look at metric == "DMEAN" and structure == "1_HEART"
@@ -11,3 +13,5 @@
 ## Linear regression of 'observed' on 'Alter' and 'BMI'
 ## Do some regression diagnostics on the fit
 ## Logistic regression model for Median-split BMI group by 'Alter'
+## Kaplan-Meier and log-rank test for overall survival by 'Seite'
+## Cox regression for overall survival by 'Seite' and 'observed'
